@@ -1,45 +1,53 @@
-import { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import TaskInput from './components/TaskInput';
 import SubtaskInput from './components/SubtaskInput';
+
 
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  const addTask = (newTaskTitle) => {
+  // Memoized function to add a new task
+  const addTask = useCallback((newTaskTitle) => {
     const newTask = {
+      id: Date.now(), // Assign a unique ID to each task
       title: newTaskTitle,
       subtasks: [],
     };
-    setTasks([...tasks, newTask]);
-  };
+    setTasks((prevTasks) => [...prevTasks, newTask]);
+  }, []);
 
-  const addSubtask = (taskIndex, subtaskText) => {
+  // Memoized function to add a new subtask to a task
+  const addSubtask = useCallback((taskIndex, subtaskText) => {
     const newTasks = [...tasks];
-    const newSubtask = { text: subtaskText, completed: false };
+    const newSubtask = { id: Date.now(), text: subtaskText, completed: false };
     newTasks[taskIndex].subtasks.push(newSubtask);
     setTasks(newTasks);
-  };
+  }, [tasks]);
 
-  const toggleSubtask = (taskIndex, subtaskIndex) => {
+  // Memoized function to toggle subtask completion
+  const toggleSubtask = useCallback((taskIndex, subtaskIndex) => {
     const updatedTasks = [...tasks];
     const currentStatus = updatedTasks[taskIndex].subtasks[subtaskIndex].completed;
     updatedTasks[taskIndex].subtasks[subtaskIndex].completed = !currentStatus;
     setTasks(updatedTasks);
-  };
+  }, [tasks]);
 
-  const deleteTask = (taskIndex) => {
+  // Memoized function to delete a task
+  const deleteTask = useCallback((taskIndex) => {
     const newTasks = tasks.filter((_, index) => index !== taskIndex);
     setTasks(newTasks);
-  };
+  }, [tasks]);
 
-  const deleteSubtask = (taskIndex, subtaskIndex) => {
+  // Memoized function to delete a subtask
+  const deleteSubtask = useCallback((taskIndex, subtaskIndex) => {
     const newTasks = [...tasks];
     newTasks[taskIndex].subtasks = newTasks[taskIndex].subtasks.filter(
       (_, index) => index !== subtaskIndex
     );
     setTasks(newTasks);
-  };
+  }, [tasks]);
 
+  // Random motivational quotes
   const positiveQuotes = [
     "Another drop in the bucket!",
     "Another step up the mountain",
@@ -49,47 +57,48 @@ function App() {
     "More tasks! More more more!",
   ];
 
-  const getRandomQuote = () => {
+  const getRandomQuote = useCallback(() => {
     const randomIndex = Math.floor(Math.random() * positiveQuotes.length);
     return positiveQuotes[randomIndex];
-  };
+  }, []);
 
-  // Calculate the total progress of all subtasks across all tasks
-  const totalSubtasks = tasks.reduce((total, task) => total + task.subtasks.length, 0);
-  const completedSubtasks = tasks.reduce(
-    (total, task) => total + task.subtasks.filter(subtask => subtask.completed).length,
-    0
-  );
-
-  const progress = totalSubtasks === 0 ? 0 : (completedSubtasks / totalSubtasks) * 100;
+  // Memoize progress calculation
+  const progress = useMemo(() => {
+    const totalSubtasks = tasks.reduce((total, task) => total + task.subtasks.length, 0);
+    const completedSubtasks = tasks.reduce(
+      (total, task) => total + task.subtasks.filter(subtask => subtask.completed).length,
+      0
+    );
+    return totalSubtasks === 0 ? 0 : (completedSubtasks / totalSubtasks) * 100;
+  }, [tasks]);
 
   return (
     <>
       <h1>Easy Wins</h1>
       <TaskInput addTask={addTask} />
 
-      {/* Display the combined momentum board */}
       <div>
         <h3>Your Tasks:</h3>
         <ul>
           {tasks.map((task, taskIndex) => (
-            <li key={taskIndex} className="task-item">
+            <li key={task.id} className="task-item">
               <div className="task-header">
                 <div className="task-title">{task.title}</div>
                 <SubtaskInput addSubtask={(subtask) => addSubtask(taskIndex, subtask)} />
-                <button onClick={() => deleteTask(taskIndex)} className="delete-task-btn">
-                  Delete Task
+                <button onClick={() => deleteTask(taskIndex)} className="task-action-btn">
+                  Delete
                 </button>
               </div>
 
               <ul className="subtasks-list">
                 {task.subtasks.map((subtask, subtaskIndex) => (
-                  <li key={subtaskIndex} className="subtask-item">
+                  <li key={subtask.id} className="subtask-item">
                     <input
                       type="checkbox"
                       checked={subtask.completed}
                       onChange={() => toggleSubtask(taskIndex, subtaskIndex)}
                       className="subtask-checkbox"
+                      aria-checked={subtask.completed ? "true" : "false"}
                     />
                     <span
                       className={`subtask-text ${subtask.completed ? 'completed' : ''}`}
@@ -98,7 +107,7 @@ function App() {
                     </span>
                     <button
                       onClick={() => deleteSubtask(taskIndex, subtaskIndex)}
-                      className="delete-subtask-btn"
+                      className="task-action-btn"
                     >
                       Delete
                     </button>
@@ -107,9 +116,10 @@ function App() {
               </ul>
             </li>
           ))}
+        </ul>
+
         <div className="momentum-board">
           <h3>Momentum Board</h3>
-          {/* Display one smiley face per completed subtask */}
           <div className="smiley-container">
             {tasks.flatMap(task => task.subtasks)
               .filter(subtask => subtask.completed)
@@ -121,10 +131,9 @@ function App() {
           </div>
           <p>{getRandomQuote()}</p>
         </div>
-        </ul>
       </div>
     </>
   );
-};
+}
 
 export default App;
