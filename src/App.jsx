@@ -54,11 +54,35 @@ function App() {
     return positiveQuotes[randomIndex];
   };
 
+  // Calculate the total progress of all subtasks across all tasks
+  const totalSubtasks = tasks.reduce((total, task) => total + task.subtasks.length, 0);
+  const completedSubtasks = tasks.reduce(
+    (total, task) => total + task.subtasks.filter(subtask => subtask.completed).length,
+    0
+  );
+
+  const progress = totalSubtasks === 0 ? 0 : (completedSubtasks / totalSubtasks) * 100;
+
   return (
     <>
       <h1>Easy Wins</h1>
       <TaskInput addTask={addTask} />
 
+      {/* Display the combined momentum board */}
+      <div className="momentum-board">
+        <h3>Momentum Board</h3>
+        {/* Display one smiley face per completed subtask */}
+        <div className="smiley-container">
+          {tasks.flatMap(task => task.subtasks)
+            .filter(subtask => subtask.completed)
+            .map((_, index) => (
+              <span key={index} role="img" aria-label="smiley">
+                😊
+              </span>
+            ))}
+        </div>
+        <p>{getRandomQuote()}</p>
+      </div>
       <div>
         <h3>Your Tasks:</h3>
         <ul>
@@ -95,23 +119,12 @@ function App() {
                   </li>
                 ))}
               </ul>
-
-              {task.subtasks.some((subtask) => subtask.completed) && (
-                <div className="momentum-board">
-                  <h4>Momentum Board</h4>
-                  <p>{getRandomQuote()}</p>
-                  {task.subtasks.map(
-                    (subtask, subtaskIndex) =>
-                      subtask.completed && <span key={subtaskIndex}>😊 </span>
-                  )}
-                </div>
-              )}
             </li>
           ))}
         </ul>
       </div>
     </>
   );
-}
+};
 
 export default App;

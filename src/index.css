@@ -21,20 +21,22 @@ h2, h3, h4, p {
   text-align: left;
 }
 
-/* Task and subtask list styles */
+/* Task and Subtask List Styles */
 ul {
   list-style-type: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .task-item {
   margin-bottom: 1.5rem;
+  padding: 1rem; /* Added internal space */
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
 .subtasks-list {
   padding-left: 1.5rem;
-  margin-top: 0.5rem;
 }
 
 .subtask-item {
@@ -50,10 +52,10 @@ ul {
 /* Button Styles */
 button {
   border-radius: 8px;
-  border: 1px solid #333;
   padding: 0.6em 1.2em;
   font-size: 1em;
   cursor: pointer;
+  background-color: transparent; /* Consistent button color */
 }
 
 button:hover {
@@ -79,5 +81,6 @@ button:hover {
 
 /* Momentum Board */
 .momentum-board {
+  padding: 1rem; /* Space around the momentum board */
   margin-top: 1rem;
 }
