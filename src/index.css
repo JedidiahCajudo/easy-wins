@@ -2,23 +2,41 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  justify-content: center;
+  flex-direction: column; /* Align items in a column */
+  align-items: center; /* Horizontally center everything */
+  justify-content: center; /* Vertically center everything */
   min-width: 320px;
   min-height: 100vh;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: #000;
   background-color: #fff;
+  text-align: center; /* Center text globally */
+}
+
+/* Header styles */
+h1, h3 {
+  margin: 0; /* Remove default margins */
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  text-align: left;
 }
 
-h2, h3, h4, p {
-  text-align: left;
+h3 {
+  font-size: 1.8em;
+}
+
+/* Flex layout for the header */
+.header-container {
+  display: flex;
+  align-items: center; /* Vertically center the items */
+  justify-content: center; /* Horizontally center the header items */
+  width: 100%; /* Ensure full width for the container */
+}
+
+.tasks-header {
+  margin-top: 1rem; /* Add top margin to tasks header */
 }
 
 /* Task and Subtask List Styles */
@@ -26,13 +44,17 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  width: 100%; /* Ensure the list spans the full width */
 }
 
 .task-item {
   margin-bottom: 1.5rem;
-  padding: 1rem; /* Added internal space */
+  padding: 1rem;
   border-radius: 8px;
   background-color: #f9f9f9;
+  width: 90%; /* Set a max-width for task items */
+  margin-left: auto;
+  margin-right: auto; /* Center task items */
 }
 
 .subtasks-list {
@@ -42,6 +64,7 @@ ul {
 .subtask-item {
   display: flex;
   align-items: center;
+  justify-content: center; /* Center the subtasks */
 }
 
 .subtask-text.completed {
@@ -55,7 +78,7 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   cursor: pointer;
-  background-color: transparent; /* Consistent button color */
+  background-color: transparent;
 }
 
 button:hover {
@@ -79,13 +102,17 @@ button:hover {
 
 /* Momentum Board */
 .momentum-board {
-  padding: 1rem; /* Space around the momentum board */
+  padding: 1rem;
   margin-top: 1rem;
+  width: 90%; /* Center the momentum board */
+  text-align: center; /* Center the text in the momentum board */
 }
 
 .smiley-container {
-  font-size: 1.5rem; /* Larger smiley faces */
+  font-size: 1.5rem;
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: center; /* Center smiley faces horizontally */
 }
 
 .momentum-board p {
