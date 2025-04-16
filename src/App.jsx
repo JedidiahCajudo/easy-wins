@@ -2,7 +2,6 @@ import React, { useState, useCallback, useMemo } from 'react';
 import TaskInput from './components/TaskInput';
 import SubtaskInput from './components/SubtaskInput';
 
-
 function App() {
   const [tasks, setTasks] = useState([]);
 
@@ -75,10 +74,12 @@ function App() {
   return (
     <>
       <h1>Easy Wins</h1>
+      <div className="tasks-header">
+        <h3>Your Tasks:</h3>
+      </div>
       <TaskInput addTask={addTask} />
 
       <div>
-        <h3>Your Tasks:</h3>
         <ul>
           {tasks.map((task, taskIndex) => (
             <li key={task.id} className="task-item">
@@ -134,6 +135,7 @@ function App() {
       </div>
     </>
   );
-}
+};
+
 
 export default App;
