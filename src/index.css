@@ -62,9 +62,8 @@ button:hover {
   background-color: #f0f0f0;
 }
 
-/* Delete Button Styles */
-.delete-task-btn,
-.delete-subtask-btn {
+/* Task and Subtask Action Button Styles */
+.task-action-btn {
   font-size: 0.8rem;
   padding: 2px 6px;
   color: #333;
@@ -74,8 +73,7 @@ button:hover {
   border-radius: 5px;
 }
 
-.delete-task-btn:hover,
-.delete-subtask-btn:hover {
+.task-action-btn:hover {
   background-color: #e0e0e0;
 }
 
@@ -83,4 +81,14 @@ button:hover {
 .momentum-board {
   padding: 1rem; /* Space around the momentum board */
   margin-top: 1rem;
+}
+
+.smiley-container {
+  font-size: 1.5rem; /* Larger smiley faces */
+  margin-bottom: 1rem;
+}
+
+.momentum-board p {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
