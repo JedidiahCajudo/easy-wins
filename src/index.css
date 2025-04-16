@@ -1,0 +1,83 @@
+/* Basic Layout */
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: #000;
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-align: left;
+}
+
+h2, h3, h4, p {
+  text-align: left;
+}
+
+/* Task and subtask list styles */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  margin-bottom: 1.5rem;
+}
+
+.subtasks-list {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.subtask-item {
+  display: flex;
+  align-items: center;
+}
+
+.subtask-text.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Button Styles */
+button {
+  border-radius: 8px;
+  border: 1px solid #333;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Delete Button Styles */
+.delete-task-btn,
+.delete-subtask-btn {
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  color: #333;
+  background-color: transparent;
+  border: 1px solid #333;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.delete-task-btn:hover,
+.delete-subtask-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Momentum Board */
+.momentum-board {
+  margin-top: 1rem;
+}
