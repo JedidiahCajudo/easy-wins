@@ -69,20 +69,6 @@ function App() {
       <TaskInput addTask={addTask} />
 
       {/* Display the combined momentum board */}
-      <div className="momentum-board">
-        <h3>Momentum Board</h3>
-        {/* Display one smiley face per completed subtask */}
-        <div className="smiley-container">
-          {tasks.flatMap(task => task.subtasks)
-            .filter(subtask => subtask.completed)
-            .map((_, index) => (
-              <span key={index} role="img" aria-label="smiley">
-                😊
-              </span>
-            ))}
-        </div>
-        <p>{getRandomQuote()}</p>
-      </div>
       <div>
         <h3>Your Tasks:</h3>
         <ul>
@@ -121,6 +107,20 @@ function App() {
               </ul>
             </li>
           ))}
+        <div className="momentum-board">
+          <h3>Momentum Board</h3>
+          {/* Display one smiley face per completed subtask */}
+          <div className="smiley-container">
+            {tasks.flatMap(task => task.subtasks)
+              .filter(subtask => subtask.completed)
+              .map((_, index) => (
+                <span key={index} role="img" aria-label="smiley">
+                  😊
+                </span>
+              ))}
+          </div>
+          <p>{getRandomQuote()}</p>
+        </div>
         </ul>
       </div>
     </>
