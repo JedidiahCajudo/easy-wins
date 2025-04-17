@@ -1,102 +1,71 @@
-/* Basic Layout */
+/* Base Layout */
 body {
   margin: 0;
+  font-family: sans-serif;
+  background: url('/main color scheme.jpg') center/cover no-repeat; /* Keep the background */
+  color: #000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 320px;
   min-height: 100vh;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color: #000;
-  background-image: url('/main color scheme.jpg'); /* Correct path */
-  background-size: cover;
-  background-position: center;
-  text-align: center;
-  background-repeat: no-repeat;
 }
 
-/* Header styles */
+/* Headings */
 h1, h3 {
-  margin: 0;
+  margin: 0.5rem 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-h3 {
-  font-size: 1.8em;
-}
-
-/* Container styles */
+/* Main Container */
 .container {
+  width: 100%;
+  max-width: 600px;
   padding: 1rem;
-  width: 96%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 1em;
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.8); /* Light transparent background */
+  border-radius: 10px; /* Soft rounded corners */
+  box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); /* Light shadow for separation */
 }
 
-/* Task and Subtask List Styles */
+/* Lists */
 ul {
-  list-style-type: none;
-  margin: 0;
+  list-style: none;
   padding: 0;
+  margin: 0;
   width: 100%;
 }
 
-.selected {
-  background-color: #333;
-  color: white;
-}
-
+/* Subtasks */
 .subtasks-list {
-  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .subtask-item {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  margin-bottom: 0.5rem;
 }
 
 .subtask-text.completed {
   text-decoration: line-through;
-  color: #888;
+  color: gray;
 }
 
-/* Button Styles */
-.add-task-btn, .task-action-btn {
-  background-color: transparent;
+/* Buttons */
+button {
+  background: none;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
-  transition: color 0.3s ease; /* Unified transition */
 }
 
-.add-task-btn:hover, .task-action-btn:hover {
-  color: #ea0f1f; /* Unified hover color */
-}
-
+/* Optional: Icons */
 .task-action-btn i {
-  color: #333;
-  font-size: 1.2rem;
-  vertical-align: middle;
+  font-size: 1rem;
 }
 
-.task-header {
-  margin: 0.4rem;
-}
-
-/* Momentum Board */
+/* Optional: Feedback */
 .smiley-container {
-  font-size: 2rem;
-  margin: 0.5rem;
-  display: flex;
-  justify-content: center;
+  text-align: center;
+  margin: 1rem 0;
 }
