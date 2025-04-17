@@ -58,9 +58,6 @@ ul {
   width: 100%; /* Ensure the list spans the full width */
 }
 
-.task-item {
-}
-
 .selected {
   background-color: #333333; /* Green */
   color: white;

@@ -11,10 +11,11 @@ function App() {
     const newTask = {
       id: Date.now(), // Assign a unique ID to each task
       title: newTaskTitle,
+      anxietyLevel,
       subtasks: [],
     };
     setTasks((prevTasks) => [...prevTasks, newTask]);
-  }, []);
+  }, [anxietyLevel]);
 
   // Memoized function to add a new subtask to a task
   const addSubtask = useCallback((taskIndex, subtaskText) => {
@@ -137,12 +138,17 @@ function App() {
         </div>
       </div>
 
-      <div>
+      <div className="task-list">
         <ul>
           {tasks.map((task, taskIndex) => (
             <li key={task.id} className="task-item">
               <div className="task-header">
-                <div className="task-title">{task.title}</div>
+                <div className="task-title">
+                  {task.title}
+                  <span className={"anxiety-level ${task.anxietyLevel}"}>
+                    ({task.anxietyLevel.charAt(0).toUpperCase() + task.anxietyLevel.slice(1)})
+                  </span>
+                </div>
                 <SubtaskInput addSubtask={(subtask) => addSubtask(taskIndex, subtask)} />
                 <button onClick={() => deleteTask(taskIndex)} className="task-action-btn">
                   Delete
