@@ -49,12 +49,12 @@ function App() {
 
   // Random motivational quotes
   const positiveQuotes = [
-    "Another drop in the bucket!",
-    "Another step up the mountain",
-    "You're farther than you think!",
-    "That's progress!",
-    "Yes! Keep adding tasks!",
-    "More tasks! More more more!",
+    "My guy!",
+    "Splendiferous!",
+    "Sweet!",
+    "That's Progress!",
+    "More! MORE!",
+    "Wowzers!",
   ];
 
   const getRandomQuote = useCallback(() => {
@@ -154,7 +154,7 @@ function App() {
               </span>
             ))}
         </div>
-        <p>{getRandomQuote()}</p>
+        <h3>{getRandomQuote()}</h3>
       </div>
     </div>
   );
