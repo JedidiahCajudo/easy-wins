@@ -104,6 +104,11 @@ function App() {
           const next = (currentIndex + 1) % levels.length;
           setAnxietyLevel(levels[next]);
         }
+
+        // Optionally: Add handling for "Enter" key here if needed
+        if (event.key === "Enter") {
+          setShowAnxietyLevelUI(false);  // Hide anxiety level UI after selecting
+        }
       }
     };
 
@@ -114,17 +119,9 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [anxietyLevel]); // Re-run if the anxiety level changes
-
-  // Focus on anxiety level buttons after the task is added
-  useEffect(() => {
-    if (showAnxietyLevelUI) {
-      anxietyLevelButtonsRef.current?.focus();
-    }
-  }, [showAnxietyLevelUI]); // Only run after the anxiety UI is shown
+  }, [anxietyLevel]); // This will re-run whenever anxietyLevel changes
 
   return (
-
     <div className="container">
       <h1>Easy Wins</h1>
 
