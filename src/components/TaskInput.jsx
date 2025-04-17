@@ -1,32 +1,36 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-const TaskInput = ({ addTask }) => {
+function TaskInput({ addTask }) {
   const [taskTitle, setTaskTitle] = useState('');
 
-  const handleTaskTitleChange = (event) => {
-    setTaskTitle(event.target.value);  // Update task title as user types
+  const handleTaskTitleChange = (e) => {
+    setTaskTitle(e.target.value);
   };
 
-  const handleKeyPress = (event) => {
-    // Listen for the "Enter" key (keyCode 13 or event.key === "Enter")
-    if (event.key === 'Enter' && taskTitle.trim()) {
-      addTask(taskTitle);  // Add the task
-      setTaskTitle('');  // Clear the input field after submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (taskTitle.trim()) {
+      // Capitalize only when submitting
+      const formattedTitle = taskTitle.charAt(0).toUpperCase() + taskTitle.slice(1);
+      addTask(formattedTitle);
+      setTaskTitle('');
     }
   };
 
   return (
-    <div>
-      <h2>Add a Task</h2>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         value={taskTitle}
         onChange={handleTaskTitleChange}
-        onKeyPress={handleKeyPress}  // Trigger adding task on Enter press
-        placeholder="Enter your task"
+        placeholder="Enter task"
+        aria-label="Task input"
       />
-    </div>
+      <button type="submit" className="task-action-btn" disabled={!taskTitle.trim()}>
+        <i className="fa-solid fa-plus"></i> {/* Font Awesome plus icon */}
+      </button>
+    </form>
   );
-};
+}
 
 export default TaskInput;
