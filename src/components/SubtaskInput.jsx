@@ -20,7 +20,7 @@ const SubtaskInput = ({ addSubtask }) => {
       value={subtask}
       onChange={handleInputChange}
       onKeyDown={handleKeyDown}  // Trigger adding subtask on Enter key press
-      placeholder="Enter subtask and press Enter"
+      placeholder="write subtask then press Enter"
     />
   );
 };

@@ -72,11 +72,8 @@ function App() {
   }, [tasks]);
 
   return (
-    <>
+    <div className="container">
       <h1>Easy Wins</h1>
-      <div className="tasks-header">
-        <h3>Your Tasks:</h3>
-      </div>
       <TaskInput addTask={addTask} />
 
       <div>
@@ -133,7 +130,7 @@ function App() {
           <p>{getRandomQuote()}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
