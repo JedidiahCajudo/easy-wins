@@ -9,7 +9,10 @@ body {
   min-height: 100vh;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: #000;
-  background-color: #fff;
+  background-image: url('public/main color scheme.jpg');
+  background-size: cover;
+  background-position: center;
+  background-image: no-repeat;
   text-align: center; /* Center text globally */
 }
 
@@ -34,11 +37,16 @@ h3 {
   justify-content: center; /* Horizontally center the header items */
   width: 100%; /* Ensure full width for the container */
 }
+.container {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column; /* Align all tasks vertically */
+  align-items: center; /* Center the task items horizontally */
+  border-radius: 1em;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.4);
 
-.tasks-header {
-  margin-top: 1rem; /* Add top margin to tasks header */
 }
-
 /* Task and Subtask List Styles */
 ul {
   list-style-type: none;
@@ -47,14 +55,8 @@ ul {
   width: 100%; /* Ensure the list spans the full width */
 }
 
+
 .task-item {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  width: 90%; /* Set a max-width for task items */
-  margin-left: auto;
-  margin-right: auto; /* Center task items */
 }
 
 .subtasks-list {
