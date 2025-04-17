@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import TaskInput from './components/TaskInput';
 import SubtaskInput from './components/SubtaskInput';
 
@@ -72,6 +72,40 @@ function App() {
     );
     return totalSubtasks === 0 ? 0 : (completedSubtasks / totalSubtasks) * 100;
   }, [tasks]);
+
+  // Add keydown handler to handle arrow keys and update anxiety level
+  useEffect(() => {
+    const levels = ["low", "medium", "high"];
+    const currentIndex = levels.indexOf(anxietyLevel);
+
+    const handleKeyDown = (event) => {
+      const isInputFocused =
+        document.activeElement.tagName === "INPUT" ||
+        document.activeElement.tagName === "TEXTAREA";
+
+      if (!isInputFocused) {
+        const currentIndex = levels.indexOf(anxietyLevel);
+
+        if (event.key === "ArrowLeft") {
+          const prev = (currentIndex + levels.length - 1) % levels.length;
+          setAnxietyLevel(levels[prev]);
+        }
+
+        if (event.key === "ArrowRight") {
+          const next = (currentIndex + 1) % levels.length;
+          setAnxietyLevel(levels[next]);
+        }
+      }
+    };
+
+    // Listen to keydown events
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Clean up listener on component unmount
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [anxietyLevel]);
 
   return (
     <div className="container">

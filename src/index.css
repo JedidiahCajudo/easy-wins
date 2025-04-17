@@ -30,6 +30,10 @@ h3 {
   font-size: 1.8em;
 }
 
+h4 {
+  margin: 1em;
+}
+
 /* Flex layout for the header */
 .header-container {
   display: flex;
@@ -57,6 +61,11 @@ ul {
 .task-item {
 }
 
+.selected {
+  background-color: #333333; /* Green */
+  color: white;
+}
+
 .subtasks-list {
   padding-left: 1.5rem;
 }
@@ -78,11 +87,6 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   cursor: pointer;
-  background-color: transparent;
-}
-
-button:hover {
-  background-color: #f0f0f0;
 }
 
 /* Task and Subtask Action Button Styles */
@@ -97,7 +101,8 @@ button:hover {
 }
 
 .task-action-btn:hover {
-  background-color: #e0e0e0;
+  background-color: #333333;
+  color: white;
 }
 
 /* Momentum Board */
