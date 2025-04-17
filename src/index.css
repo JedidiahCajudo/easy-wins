@@ -31,7 +31,7 @@ h3 {
 }
 
 h4 {
-  margin: 1em;
+  margin: 0.8em;
 }
 
 /* Flex layout for the header */
@@ -43,8 +43,10 @@ h4 {
 }
 .container {
   padding: 1rem;
+  width: 96%;
   display: flex;
   flex-direction: column; /* Align all tasks vertically */
+  justify-self: center;
   align-items: center; /* Center the task items horizontally */
   border-radius: 1em;
   background-color: rgba(255, 255, 255, 0.8);
@@ -98,19 +100,21 @@ ul {
   border: none;
   cursor: pointer;
   font-size: 1rem; /* Adjust the size of the icon */
-  padding: 0.5rem; /* Add padding around the icon */
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .task-action-btn i {
   color: #333333; /* Set icon color */
-  font-size: 1.2rem; /* Adjust icon size */
+  font-size: rem; /* Adjust icon size */
 }
 
 .task-action-btn:hover i {
   color: #ea0f1f; /* Color change on hover (red for trash icon) */
 }
 
+.task-header {
+  margin: 0.4rem;
+}
 /* Momentum Board */
 .smiley-container {
   font-size: 2rem;

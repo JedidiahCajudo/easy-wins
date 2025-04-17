@@ -25,7 +25,7 @@ function TaskInput({ addTask }) {
         onChange={handleInputChange}
         placeholder="Enter task"
       />
-      <button type="submit" className="add-task-btn">
+      <button type="submit" className="task-action-btn">
         <i className="fa-solid fa-plus"></i> {/* Font Awesome plus icon */}
       </button>
     </form>
