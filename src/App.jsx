@@ -1,13 +1,16 @@
-// App.jsx
 import React, { useState, useCallback, useMemo } from 'react';
 import TaskInput from './components/TaskInput';
 import SubtaskInput from './components/SubtaskInput';
 
+const positiveQuotes = [
+  "My Guy!", "Splendiferous!", "Sweet!", "That's Progress!", "More! MORE!", "Wowzers!", "Fantastico!"
+];
+
 function App() {
   const [tasks, setTasks] = useState([]);
   const [anxietyLevel, setAnxietyLevel] = useState("low");
-  const [hasCompletedSubtask, setHasCompletedSubtask] = useState(false);
 
+  // Add a new task
   const addTask = useCallback((newTaskTitle) => {
     const newTask = {
       id: Date.now(),
@@ -18,38 +21,40 @@ function App() {
     setTasks((prevTasks) => [...prevTasks, newTask]);
   }, [anxietyLevel]);
 
+  // Add a new subtask to a task
   const addSubtask = useCallback((taskIndex, subtaskText) => {
-    const newTasks = [...tasks];
+    const updatedTasks = [...tasks];
     const newSubtask = { id: Date.now(), text: subtaskText, completed: false };
-    newTasks[taskIndex].subtasks.push(newSubtask);
-    setTasks(newTasks);
+    updatedTasks[taskIndex].subtasks.push(newSubtask);
+    setTasks(updatedTasks);
   }, [tasks]);
 
+  // Toggle subtask completion
   const toggleSubtask = useCallback((taskIndex, subtaskIndex) => {
     const updatedTasks = [...tasks];
     updatedTasks[taskIndex].subtasks[subtaskIndex].completed = !updatedTasks[taskIndex].subtasks[subtaskIndex].completed;
     setTasks(updatedTasks);
   }, [tasks]);
 
+  // Delete a task
   const deleteTask = useCallback((taskIndex) => {
     setTasks(tasks.filter((_, index) => index !== taskIndex));
   }, [tasks]);
 
+  // Delete a subtask
   const deleteSubtask = useCallback((taskIndex, subtaskIndex) => {
-    const newTasks = [...tasks];
-    newTasks[taskIndex].subtasks = newTasks[taskIndex].subtasks.filter((_, index) => index !== subtaskIndex);
-    setTasks(newTasks);
+    const updatedTasks = [...tasks];
+    updatedTasks[taskIndex].subtasks = updatedTasks[taskIndex].subtasks.filter((_, index) => index !== subtaskIndex);
+    setTasks(updatedTasks);
   }, [tasks]);
 
-  const positiveQuotes = [
-    "My Guy!", "Splendiferous!", "Sweet!", "That's Progress!", "More! MORE!", "Wowzers!", "Fantastico!"
-  ];
-
+  // Random positive feedback
   const getRandomQuote = () => {
     const randomIndex = Math.floor(Math.random() * positiveQuotes.length);
     return positiveQuotes[randomIndex];
   };
 
+  // Calculate progress percentage
   const progress = useMemo(() => {
     const totalSubtasks = tasks.reduce((total, task) => total + task.subtasks.length, 0);
     const completedSubtasks = tasks.reduce(
@@ -94,8 +99,11 @@ function App() {
                   </span>
                 </div>
                 <SubtaskInput addSubtask={(subtask) => addSubtask(taskIndex, subtask)} />
-                {/* Delete Task Button */}
-                <button onClick={() => deleteTask(taskIndex)} className="task-action-btn">
+                <button
+                  onClick={() => deleteTask(taskIndex)}
+                  className="task-action-btn"
+                  aria-label="Delete task"
+                >
                   <i className="fa-solid fa-trash"></i>
                 </button>
               </div>
@@ -109,14 +117,15 @@ function App() {
                       checked={subtask.completed}
                       onChange={() => toggleSubtask(taskIndex, subtaskIndex)}
                       className="subtask-checkbox"
+                      aria-label={`Mark ${subtask.text} as completed`}
                     />
                     <span className={`subtask-text ${subtask.completed ? 'completed' : ''}`}>
                       {subtask.text}
                     </span>
-                    {/* Delete Subtask Button */}
                     <button
                       onClick={() => deleteSubtask(taskIndex, subtaskIndex)}
                       className="task-action-btn"
+                      aria-label={`Delete subtask ${subtask.text}`}
                     >
                       <i className="fa-solid fa-trash"></i>
                     </button>

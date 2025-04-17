@@ -2,23 +2,23 @@
 body {
   margin: 0;
   display: flex;
-  flex-direction: column; /* Align items in a column */
-  align-items: center; /* Horizontally center everything */
-  justify-content: center; /* Vertically center everything */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: #000;
-  background-image: url('public/main color scheme.jpg');
+  background-image: url('/main color scheme.jpg'); /* Correct path */
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; /* Corrected: background image repeat should be 'no-repeat' */
-  text-align: center; /* Center text globally */
+  text-align: center;
+  background-repeat: no-repeat;
 }
 
 /* Header styles */
 h1, h3 {
-  margin: 0; /* Remove default margins */
+  margin: 0;
 }
 
 h1 {
@@ -30,24 +30,13 @@ h3 {
   font-size: 1.8em;
 }
 
-h4 {
-  margin: 0.8em;
-}
-
-/* Flex layout for the header */
-.header-container {
-  display: flex;
-  align-items: center; /* Vertically center the items */
-  justify-content: center; /* Horizontally center the header items */
-  width: 100%; /* Ensure full width for the container */
-}
+/* Container styles */
 .container {
   padding: 1rem;
   width: 96%;
   display: flex;
-  flex-direction: column; /* Align all tasks vertically */
-  justify-self: center;
-  align-items: center; /* Center the task items horizontally */
+  flex-direction: column;
+  align-items: center;
   border-radius: 1em;
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.4);
@@ -58,11 +47,11 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 100%; /* Ensure the list spans the full width */
+  width: 100%;
 }
 
 .selected {
-  background-color: #333333; /* Green */
+  background-color: #333;
   color: white;
 }
 
@@ -73,7 +62,7 @@ ul {
 .subtask-item {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center the subtasks */
+  justify-content: center;
 }
 
 .subtask-text.completed {
@@ -82,43 +71,31 @@ ul {
 }
 
 /* Button Styles */
-.add-task-btn {
+.add-task-btn, .task-action-btn {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 1rem; /* Adjust the size of the icon */
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: color 0.3s ease; /* Unified transition */
 }
 
-.add-task-btn:hover {
-  color: #ea0f1f;
-}
-
-/* Task and Subtask Action Button Styles */
-.task-action-btn {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem; /* Adjust the size of the icon */
-  transition: color 0.3s ease;
+.add-task-btn:hover, .task-action-btn:hover {
+  color: #ea0f1f; /* Unified hover color */
 }
 
 .task-action-btn i {
-  color: #333333; /* Set icon color */
-  font-size: rem; /* Adjust icon size */
-}
-
-.task-action-btn:hover i {
-  color: #ea0f1f; /* Color change on hover (red for trash icon) */
+  color: #333;
+  font-size: 1.2rem;
 }
 
 .task-header {
   margin: 0.4rem;
 }
+
 /* Momentum Board */
 .smiley-container {
   font-size: 2rem;
   margin: 0.5rem;
   display: flex;
-  justify-content: center; /* Center smiley faces horizontally */
+  justify-content: center;
 }
