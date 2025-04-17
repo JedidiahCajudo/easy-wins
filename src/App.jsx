@@ -4,6 +4,7 @@ import SubtaskInput from './components/SubtaskInput';
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [anxietyLevel, setAnxietyLevel] = useState("low");
 
   // Memoized function to add a new task
   const addTask = useCallback((newTaskTitle) => {
@@ -77,6 +78,31 @@ function App() {
       <TaskInput addTask={addTask} />
 
       <div>
+        {/* Anxiety Level UI */}
+        <h4>How intimidating is this task?</h4>
+        <div>
+          <button
+            className={anxietyLevel === "low" ? "selected" : ""}
+            onClick={() => setAnxietyLevel("low")}
+          >
+            Low
+          </button>
+          <button
+            className={anxietyLevel === "medium" ? "selected" : ""}
+            onClick={() => setAnxietyLevel("medium")}
+          >
+            Medium
+          </button>
+          <button
+            className={anxietyLevel === "high" ? "selected" : ""}
+            onClick={() => setAnxietyLevel("high")}
+          >
+            High
+          </button>
+        </div>
+      </div>
+
+      <div>
         <ul>
           {tasks.map((task, taskIndex) => (
             <li key={task.id} className="task-item">
@@ -115,24 +141,23 @@ function App() {
             </li>
           ))}
         </ul>
+      </div>
 
-        <div className="momentum-board">
-          <h3>Momentum Board</h3>
-          <div className="smiley-container">
-            {tasks.flatMap(task => task.subtasks)
-              .filter(subtask => subtask.completed)
-              .map((_, index) => (
-                <span key={index} role="img" aria-label="smiley">
-                  😊
-                </span>
-              ))}
-          </div>
-          <p>{getRandomQuote()}</p>
+      <div className="momentum-board">
+        <h4>Momentum Board</h4>
+        <div className="smiley-container">
+          {tasks.flatMap(task => task.subtasks)
+            .filter(subtask => subtask.completed)
+            .map((_, index) => (
+              <span key={index} role="img" aria-label="smiley">
+                😊
+              </span>
+            ))}
         </div>
+        <p>{getRandomQuote()}</p>
       </div>
     </div>
   );
-};
-
+}
 
 export default App;
