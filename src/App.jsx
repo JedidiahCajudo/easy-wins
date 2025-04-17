@@ -124,10 +124,17 @@ function App() {
   }, [showAnxietyLevelUI]); // Only run after the anxiety UI is shown
 
   return (
+
     <div className="container">
       <h1>Easy Wins</h1>
-      <h4>Add a task</h4>
-      <TaskInput addTask={addTask} />
+
+      {/* Conditional rendering to show Add a task only if no tasks are present */}
+      {tasks.length === 0 && (
+        <>
+          <h4>Add a task</h4>
+          <TaskInput addTask={addTask} />
+        </>
+      )}
 
       {showAnxietyLevelUI && (
         <div>
