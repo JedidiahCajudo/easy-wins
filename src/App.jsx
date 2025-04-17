@@ -144,8 +144,6 @@ function App() {
         </ul>
       </div>
 
-      <div className="momentum-board">
-        <h4>Momentum Board</h4>
         <div className="smiley-container">
           {tasks.flatMap(task => task.subtasks)
             .filter(subtask => subtask.completed)
@@ -156,7 +154,6 @@ function App() {
             ))}
         </div>
         <h3>{getRandomQuote()}</h3>
-      </div>
     </div>
   );
 }

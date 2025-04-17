@@ -101,18 +101,9 @@ button:hover {
 }
 
 /* Momentum Board */
-.momentum-board {
-  width: 90%; /* Center the momentum board */
-  text-align: center; /* Center the text in the momentum board */
-}
-
 .smiley-container {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin: 0.5rem;
   display: flex;
   justify-content: center; /* Center smiley faces horizontally */
-}
-
-.momentum-board h4{
-  margin: 1em;
 }
