@@ -17,7 +17,6 @@ const TaskInput = ({ addTask }) => {
 
   return (
     <div>
-      <h4>Add a Task</h4>
       <input
         type="text"
         value={taskTitle}

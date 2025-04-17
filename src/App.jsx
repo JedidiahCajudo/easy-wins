@@ -1,10 +1,13 @@
-import React, { useState, useCallback, useMemo, useEffect } from 'react';
+import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import TaskInput from './components/TaskInput';
 import SubtaskInput from './components/SubtaskInput';
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [anxietyLevel, setAnxietyLevel] = useState("low");
+  const [showAnxietyLevelUI, setShowAnxietyLevelUI] = useState(false);
+  const [hasCompletedSubtask, setHasCompletedSubtask] = useState(false);
+  const anxietyLevelButtonsRef = useRef(null);
 
   // Memoized function to add a new task
   const addTask = useCallback((newTaskTitle) => {
@@ -14,7 +17,9 @@ function App() {
       anxietyLevel,
       subtasks: [],
     };
+
     setTasks((prevTasks) => [...prevTasks, newTask]);
+    setShowAnxietyLevelUI(true);
   }, [anxietyLevel]);
 
   // Memoized function to add a new subtask to a task
@@ -31,6 +36,11 @@ function App() {
     const currentStatus = updatedTasks[taskIndex].subtasks[subtaskIndex].completed;
     updatedTasks[taskIndex].subtasks[subtaskIndex].completed = !currentStatus;
     setTasks(updatedTasks);
+
+    const hasAnyCompleted = updatedTasks.some(task =>
+      task.subtasks.some(subtask => subtask.completed)
+    );
+    setHasCompletedSubtask(hasAnyCompleted);
   }, [tasks]);
 
   // Memoized function to delete a task
@@ -74,7 +84,7 @@ function App() {
     return totalSubtasks === 0 ? 0 : (completedSubtasks / totalSubtasks) * 100;
   }, [tasks]);
 
-  // Add keydown handler to handle arrow keys and update anxiety level
+  // Keydown handler for anxiety level switching
   useEffect(() => {
     const levels = ["low", "medium", "high"];
     const currentIndex = levels.indexOf(anxietyLevel);
@@ -85,8 +95,6 @@ function App() {
         document.activeElement.tagName === "TEXTAREA";
 
       if (!isInputFocused) {
-        const currentIndex = levels.indexOf(anxietyLevel);
-
         if (event.key === "ArrowLeft") {
           const prev = (currentIndex + levels.length - 1) % levels.length;
           setAnxietyLevel(levels[prev]);
@@ -106,37 +114,47 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [anxietyLevel]);
+  }, [anxietyLevel]); // Re-run if the anxiety level changes
+
+  // Focus on anxiety level buttons after the task is added
+  useEffect(() => {
+    if (showAnxietyLevelUI) {
+      anxietyLevelButtonsRef.current?.focus();
+    }
+  }, [showAnxietyLevelUI]); // Only run after the anxiety UI is shown
 
   return (
     <div className="container">
       <h1>Easy Wins</h1>
+      <h4>Add a task</h4>
       <TaskInput addTask={addTask} />
 
-      <div>
-        {/* Anxiety Level UI */}
-        <h4>How intimidating is this task?</h4>
+      {showAnxietyLevelUI && (
         <div>
-          <button
-            className={anxietyLevel === "low" ? "selected" : ""}
-            onClick={() => setAnxietyLevel("low")}
-          >
-            Low
-          </button>
-          <button
-            className={anxietyLevel === "medium" ? "selected" : ""}
-            onClick={() => setAnxietyLevel("medium")}
-          >
-            Medium
-          </button>
-          <button
-            className={anxietyLevel === "high" ? "selected" : ""}
-            onClick={() => setAnxietyLevel("high")}
-          >
-            High
-          </button>
+          <h4>How intimidating is this task? (use keys ⬅️ or ➡️)</h4>
+          <div>
+            <button
+              ref={anxietyLevelButtonsRef} // This ref ensures the button gets focused
+              className={anxietyLevel === "low" ? "selected" : ""}
+              onClick={() => setAnxietyLevel("low")}
+            >
+              Low
+            </button>
+            <button
+              className={anxietyLevel === "medium" ? "selected" : ""}
+              onClick={() => setAnxietyLevel("medium")}
+            >
+              Medium
+            </button>
+            <button
+              className={anxietyLevel === "high" ? "selected" : ""}
+              onClick={() => setAnxietyLevel("high")}
+            >
+              High
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="task-list">
         <ul>
@@ -145,7 +163,7 @@ function App() {
               <div className="task-header">
                 <div className="task-title">
                   {task.title}
-                  <span className={"anxiety-level ${task.anxietyLevel}"}>
+                  <span className={`anxiety-level ${task.anxietyLevel}`}>
                     ({task.anxietyLevel.charAt(0).toUpperCase() + task.anxietyLevel.slice(1)})
                   </span>
                 </div>
@@ -184,16 +202,17 @@ function App() {
         </ul>
       </div>
 
-        <div className="smiley-container">
-          {tasks.flatMap(task => task.subtasks)
-            .filter(subtask => subtask.completed)
-            .map((_, index) => (
-              <span key={index} role="img" aria-label="smiley">
-                😊
-              </span>
-            ))}
-        </div>
-        <h3>{getRandomQuote()}</h3>
+      <div className="smiley-container">
+        {tasks.flatMap(task => task.subtasks)
+          .filter(subtask => subtask.completed)
+          .map((_, index) => (
+            <span key={index} role="img" aria-label="smiley">
+              😊
+            </span>
+          ))}
+      </div>
+
+      {hasCompletedSubtask && <h3>{getRandomQuote()}</h3>}
     </div>
   );
 }
