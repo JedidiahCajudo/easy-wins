@@ -73,18 +73,15 @@ function App() {
       <TaskInput addTask={addTask} />
 
       {/* Anxiety Level Section */}
-      <h4>Anxiety Level? (use keys ⬅️ or ➡️)</h4>
-      <div>
-        {['low', 'medium', 'high'].map(level => (
-          <button
-            key={level}
-            className={anxietyLevel === level ? "selected" : ""}
-            onClick={() => setAnxietyLevel(level)}
-          >
-            {level.charAt(0).toUpperCase() + level.slice(1)}
-          </button>
-        ))}
-      </div>
+      <h4>How overwhelming is this task?</h4>
+      <select
+        value={anxietyLevel}
+        onChange={(e) => setAnxietyLevel(e.target.value)}
+      >
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
 
       {/* Task List Section */}
       <div className="task-list">
