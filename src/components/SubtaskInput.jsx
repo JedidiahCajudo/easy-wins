@@ -1,6 +1,6 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState } from 'react';
 
-const SubtaskInput = forwardRef(({ addSubtask }, ref) => {
+const SubtaskInput = ({ addSubtask }) => {
   const [subtask, setSubtask] = useState('');
 
   const handleInputChange = (event) => {
@@ -17,13 +17,12 @@ const SubtaskInput = forwardRef(({ addSubtask }, ref) => {
   return (
     <input
       type="text"
-      ref={ref}
       value={subtask}
       onChange={handleInputChange}
       onKeyDown={handleKeyDown}  // Trigger adding subtask on Enter key press
       placeholder="write subtask then press Enter"
     />
   );
-});
+};
 
 export default SubtaskInput;

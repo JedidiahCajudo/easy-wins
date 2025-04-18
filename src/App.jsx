@@ -101,7 +101,6 @@ function App() {
 
                 {/* Render SubtaskInput once for each task */}
                 <SubtaskInput addSubtask={(subtask) => addSubtask(taskIndex, subtask)} />
-
                 <button
                   onClick={() => deleteTask(taskIndex)}
                   className="task-action-btn"
