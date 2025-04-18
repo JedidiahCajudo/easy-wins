@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import SubtaskInput from '.SubtaskInput';
 
 function TaskInput({ addTask }) {
   const [taskTitle, setTaskTitle] = useState('');
+  const subtaskInputRef = useRef(null);
 
   const handleTaskTitleChange = (e) => {
     setTaskTitle(e.target.value);
@@ -14,6 +16,8 @@ function TaskInput({ addTask }) {
       const formattedTitle = taskTitle.charAt(0).toUpperCase() + taskTitle.slice(1);
       addTask(formattedTitle);
       setTaskTitle('');
+
+      subtaskInputRef.current.focus();
     }
   };
 
@@ -29,8 +33,10 @@ function TaskInput({ addTask }) {
       <button type="submit" className="task-action-btn" disabled={!taskTitle.trim()}>
         <i className="fa-solid fa-plus"></i> {/* Font Awesome plus icon */}
       </button>
+
+      <SubtaskInput ref={subtaskInputRef} addSubtask={(subtask) => console.log(subtask)} />
     </form>
   );
-}
+};
 
 export default TaskInput;
