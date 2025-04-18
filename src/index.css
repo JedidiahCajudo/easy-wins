@@ -25,7 +25,9 @@ h1, h3 {
   border-radius: 10px; /* Soft rounded corners */
   box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); /* Light shadow for separation */
 }
-
+.task-list {
+  text-align: right;
+}
 /* Lists */
 ul {
   list-style: none;
@@ -41,9 +43,6 @@ ul {
 }
 
 .subtask-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 0.5rem;
 }
 

@@ -73,7 +73,7 @@ function App() {
       <TaskInput addTask={addTask} />
 
       {/* Anxiety Level Section */}
-      <h4>How intimidating is this task? (use keys ⬅️ or ➡️)</h4>
+      <h4>Anxiety Level? (use keys ⬅️ or ➡️)</h4>
       <div>
         {['low', 'medium', 'high'].map(level => (
           <button
