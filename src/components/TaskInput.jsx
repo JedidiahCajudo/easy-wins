@@ -1,36 +1,28 @@
 import React, { useState } from 'react';
 
-function TaskInput({ addTask }) {
-  const [taskTitle, setTaskTitle] = useState('');
+const TaskInput = ({ addTask }) => {
+  const [task, setTask] = useState('');
 
-  const handleTaskTitleChange = (e) => {
-    setTaskTitle(e.target.value);
+  const handleInputChange = (event) => {
+    setTask(event.target.value);  // Update task as user types
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (taskTitle.trim()) {
-      // Capitalize only when submitting
-      const formattedTitle = taskTitle.charAt(0).toUpperCase() + taskTitle.slice(1);
-      addTask(formattedTitle);
-      setTaskTitle('');
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && task.trim()) {
+      addTask(task);  // Add the task when Enter is pressed
+      setTask('');  // Clear input after task submission
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={taskTitle}
-        onChange={handleTaskTitleChange}
-        placeholder="Enter task"
-        aria-label="Task input"
-      />
-      <button type="submit" className="task-action-btn" disabled={!taskTitle.trim()}>
-        <i className="fa-solid fa-plus"></i> {/* Font Awesome plus icon */}
-      </button>
-    </form>
+    <input
+      type="text"
+      value={task}
+      onChange={handleInputChange}
+      onKeyDown={handleKeyDown}  // Trigger adding task on Enter key press
+      placeholder="Write task then press Enter"
+    />
   );
-}
+};
 
 export default TaskInput;
