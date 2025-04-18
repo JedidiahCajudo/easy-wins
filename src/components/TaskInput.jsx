@@ -3,7 +3,6 @@ import SubtaskInput from './SubtaskInput';
 
 function TaskInput({ addTask }) {
   const [taskTitle, setTaskTitle] = useState('');
-  const subtaskInputRef = useRef(null);
 
   const handleTaskTitleChange = (e) => {
     setTaskTitle(e.target.value);
@@ -33,8 +32,6 @@ function TaskInput({ addTask }) {
       <button type="submit" className="task-action-btn" disabled={!taskTitle.trim()}>
         <i className="fa-solid fa-plus"></i> {/* Font Awesome plus icon */}
       </button>
-
-      <SubtaskInput ref={subtaskInputRef} addSubtask={(subtask) => console.log(subtask)} />
     </form>
   );
 };
