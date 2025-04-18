@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import SubtaskInput from '.SubtaskInput';
+import SubtaskInput from './SubtaskInput';
 
 function TaskInput({ addTask }) {
   const [taskTitle, setTaskTitle] = useState('');
