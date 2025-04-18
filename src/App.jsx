@@ -69,19 +69,24 @@ function App() {
       <h1>Easy Wins</h1>
 
       {/* Task Input Section */}
-      <h4>Add a task</h4>
-      <TaskInput addTask={addTask} />
+      <div className="task-input-group">
+        <div className="task-name">
+          <h4>Task Name</h4>
+          <TaskInput addTask={addTask} />
+        </div>
 
-      {/* Anxiety Level Section */}
-      <h4>How overwhelming is this task?</h4>
-      <select
-        value={anxietyLevel}
-        onChange={(e) => setAnxietyLevel(e.target.value)}
-      >
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
+        <div className="anxiety-select">
+          <h4>Task Anxiety Level</h4>
+          <select
+            value={anxietyLevel}
+            onChange={(e) => setAnxietyLevel(e.target.value)}
+          >
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+      </div>
 
       {/* Task List Section */}
       <div className="task-list">
@@ -145,12 +150,12 @@ function App() {
               😊
             </span>
           ))}
+        {tasks.some(task => task.subtasks.some(subtask => subtask.completed)) && (
+          <h3>{getRandomQuote()}</h3>
+        )}
       </div>
 
       {/* Positive Feedback for Completed Subtasks */}
-      {tasks.some(task => task.subtasks.some(subtask => subtask.completed)) && (
-        <h3>{getRandomQuote()}</h3>
-      )}
     </div>
   );
 }
