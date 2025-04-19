@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="app">
         <div className="completed-tasks">
-        <h3>Completed Tasks</h3>
+        <h3>Done</h3>
         <ul>
           {completedTasks.map((task, index) => (
             <li key={index}>{task}</li>

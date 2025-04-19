@@ -1,3 +1,12 @@
+/* Global Font Settings */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+}
+
 /* Basic Layout */
 .app {
   display: flex;
