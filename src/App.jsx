@@ -3,7 +3,7 @@ import TaskInput from './components/TaskInput';
 import SubtaskInput from './components/SubtaskInput';
 
 const positiveQuotes = [
-  "My Guy!", "Splendiferous!", "Sweet!", "That's Progress!", "More! MORE!", "Wowzers!", "Fantastico!"
+  "My Guy!", "Splendiferous!", "Sweet!", "That's Progress!", "More! MORE!", "Cool!", "Fantastico!"
 ];
 
 function App() {
