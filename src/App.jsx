@@ -26,29 +26,7 @@ function App() {
 
   return (
     <div className="app">
-      <div className="input-section">
-        <input
-          type="text"
-          value={task}
-          onChange={handleInputChange}
-          onKeyDown={handleAddTask}
-          placeholder="Type a task and press ENTER"
-        />
-      </div>
-
-      <div className="task-section">
-        <ul>
-          {tasks.map((task, index) => (
-            <li key={index}>
-              {task}
-              <button onClick={() => handleCompleteTask(task)}>DONE</button>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Left Column: Completed Tasks */}
-      <div className="completed-tasks">
+        <div className="completed-tasks">
         <h3>Completed Tasks</h3>
         <ul>
           {completedTasks.map((task, index) => (
@@ -56,6 +34,32 @@ function App() {
           ))}
         </ul>
       </div>
+
+      <div className="input-container">
+        <div className="input-section">
+          <input
+            type="text"
+            value={task}
+            onChange={handleInputChange}
+            onKeyDown={handleAddTask}
+            placeholder="Type a task and press ENTER"
+          />
+        </div>
+
+        <div className="task-section">
+          <ul>
+            {tasks.map((task, index) => (
+              <li key={index}>
+                {task}
+                <button onClick={() => handleCompleteTask(task)}>DONE</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Left Column: Completed Tasks */}
+
     </div>
   );
 }

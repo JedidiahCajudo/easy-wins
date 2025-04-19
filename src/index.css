@@ -1,35 +1,68 @@
 /* Basic Layout */
 .app {
   display: flex;
-  flex-direction: row;
   height: 100vh;
-  padding: 20px;
+  flex-direction: row;
+  justify-content: flex-start; /* Keeps it left aligned */
+  align-items: center; /* Centers the input section vertically */
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Completed Tasks - Left Column */
+.completed-tasks {
+  flex: 1;
+  background-color: #eeeee6;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.completed-tasks h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.completed-tasks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.completed-tasks li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Input Section */
+.input-container {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;  /* Takes full height of available space */
+  justify-content: center;
 }
 
 .input-section {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 input {
-  padding: 10px;
-  font-size: 16px;
-  width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-}
-
-input:focus {
-  border-color: #4CAF50;
+  width: 80%;
+  max-width: 30rem; /* Remains as rem for responsiveness */
+  padding: 0.75rem;
+  font-size: 1.2rem;
+  border: none;
+  border-bottom: 0.16rem solid #333333;
+  outline: none;  /* Removes outline on all inputs, including focus */
 }
 
 /* Task Section */
 .task-section {
-  flex: 3;
-  padding-left: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -37,31 +70,14 @@ input:focus {
 button {
   background-color: #4CAF50;
   color: white;
-  padding: 10px;
+  padding: 0.5rem 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 1rem;
+  font-size: 1rem;
 }
 
 button:hover {
   background-color: #45a049;
-}
-
-/* Completed Tasks - Left Column */
-.completed-tasks {
-  flex: 1;
-  padding: 20px;
-  background-color: #f4f4f4;
-  border-left: 2px solid #ccc;
-}
-
-.completed-tasks ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.completed-tasks li {
-  margin-bottom: 10px;
-  font-size: 16px;
 }
