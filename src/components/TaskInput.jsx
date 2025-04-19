@@ -21,6 +21,7 @@ const TaskInput = ({ addTask }) => {
       onChange={handleInputChange}
       onKeyDown={handleKeyDown}  // Trigger adding task on Enter key press
       placeholder="Write task then press Enter"
+      aria-label="Task input field" // Added accessibility label
     />
   );
 };

@@ -1,89 +1,67 @@
-/* Base Layout */
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background: url('/main color scheme.jpg') center/cover no-repeat; /* Keep the background */
-  color: #000;
+/* Basic Layout */
+.app {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  flex-direction: row;
+  height: 100vh;
+  padding: 20px;
 }
 
-/* Headings */
-h1, h3, h4 {
-  margin: 0.5rem 0;
-}
-
-/* Main Container */
-.container {
-  width: 100%;
-  max-width: 600px;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.8); /* Light transparent background */
-  border-radius: 10px; /* Soft rounded corners */
-  box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); /* Light shadow for separation */
-}
-
-.task-input-group {
-  display: flex;
-  gap: 0.8rem;
-  align-items: flex-end;
-  align-items: center; /* Align TaskInput and dropdown */
-}
-
-.task-name,
-.anxiety-select {
+.input-section {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.task-list {
-  text-align: right;
-}
-/* Lists */
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
+input {
+  padding: 10px;
+  font-size: 16px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
 }
 
-/* Subtasks */
-.subtasks-list {
+input:focus {
+  border-color: #4CAF50;
+}
+
+/* Task Section */
+.task-section {
+  flex: 3;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
 }
 
-.subtask-item {
-  margin-bottom: 0.5rem;
-}
-
-.subtask-text.completed {
-  text-decoration: line-through;
-  color: gray;
-}
-
-/* Buttons */
 button {
-  background: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  margin-left: 10px;
 }
 
-/* Optional: Icons */
-.task-action-btn i {
-  font-size: 1rem;
+button:hover {
+  background-color: #45a049;
 }
 
-/* Optional: Feedback */
-.smiley-container {
-  text-align: center;
-  margin: 1rem 0;
+/* Completed Tasks - Left Column */
+.completed-tasks {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-left: 2px solid #ccc;
 }
 
-select {
-  padding: 0.2rem;
-  font-size: 0.8rem;
-  border-radius: 8%;
+.completed-tasks ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.completed-tasks li {
+  margin-bottom: 10px;
+  font-size: 16px;
 }
