@@ -39,7 +39,6 @@ input::placeholder {
   overflow-y: auto;
 }
 
-
 .completed-tasks h3 {
   font-size: 1.4rem;
   margin-bottom: 1rem;
@@ -55,6 +54,11 @@ input::placeholder {
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
   line-height: 1.5;
+}
+
+.completed-tasks li.completed {
+  text-decoration: line-through; /* Strikethrough effect */
+  color: #888; /* Optional: fade the text color */
 }
 
 /* Input Section */

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-
 function App() {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
@@ -19,19 +18,19 @@ function App() {
     }
   };
 
-  // Mark task as completed and move to left column
+  // Mark task as completed and add a class for strikethrough
   const handleCompleteTask = (completedTask) => {
-    setCompletedTasks([...completedTasks, completedTask]);
-    setTasks(tasks.filter((task) => task !== completedTask));
+    setTasks(tasks.filter((task) => task !== completedTask)); // Remove from tasks
+    setCompletedTasks([...completedTasks, completedTask]); // Add to completed tasks
   };
 
   return (
     <div className="app">
-        <div className="completed-tasks">
+      <div className="completed-tasks">
         <h3>Completed Tasks</h3>
         <ul>
           {completedTasks.map((task, index) => (
-            <li key={index}>{task}</li>
+            <li key={index} className="completed">{task}</li>
           ))}
         </ul>
       </div>
@@ -58,9 +57,6 @@ function App() {
           </ul>
         </div>
       </div>
-
-      {/* Left Column: Completed Tasks */}
-
     </div>
   );
 }
