@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
+
+  // Load tasks from localStorage on initial load
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem('tasks'));
+    const savedCompletedTasks = JSON.parse(localStorage.getItem('completedTasks'));
+
+    if (savedTasks) setTasks(savedTasks); // If tasks exist in localStorage, set them
+    if (savedCompletedTasks) setCompletedTasks(savedCompletedTasks); // If completed tasks exist, set them
+  }, []); // Run once, on component mount
 
   // Handle new task input
   const handleInputChange = (e) => {
@@ -18,11 +27,18 @@ function App() {
     }
   };
 
-  // Mark task as completed
+  // Mark task as completed and trigger animation
   const handleCompleteTask = (completedTask) => {
     setTasks(tasks.filter((task) => task !== completedTask)); // Remove from tasks
     setCompletedTasks([...completedTasks, completedTask]); // Add to completed tasks
   };
+
+  // Save tasks and completedTasks to localStorage whenever they change
+  useEffect(() => {
+    console.log('Saving to localStorage:', tasks, completedTasks);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
+  }, [tasks, completedTasks]);
 
   return (
     <div className="app">
