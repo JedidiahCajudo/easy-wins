@@ -18,7 +18,7 @@ function App() {
     }
   };
 
-  // Mark task as completed and add a class for strikethrough
+  // Mark task as completed
   const handleCompleteTask = (completedTask) => {
     setTasks(tasks.filter((task) => task !== completedTask)); // Remove from tasks
     setCompletedTasks([...completedTasks, completedTask]); // Add to completed tasks
@@ -30,7 +30,9 @@ function App() {
         <h3>Completed Tasks</h3>
         <ul>
           {completedTasks.map((task, index) => (
-            <li key={index} className="completed">{task}</li>
+            <li key={index} className="completed">
+              {task}
+            </li>
           ))}
         </ul>
       </div>

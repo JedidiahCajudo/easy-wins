@@ -57,8 +57,8 @@ input::placeholder {
 }
 
 .completed-tasks li.completed {
-  text-decoration: line-through; /* Strikethrough effect */
-  color: #888; /* Optional: fade the text color */
+  text-decoration: line-through;
+  color: #888;
 }
 
 /* Input Section */
@@ -89,7 +89,6 @@ input:focus {
   border-color: #f0008e; /* Pink highlight when focused */
   outline: none; /* Remove any outline during focus */
 }
-
 
 /* Task Section */
 .task-section {
@@ -127,7 +126,6 @@ button {
 button:hover {
   background-color: #c40075; /* Slightly darker for a soft hover effect */
 }
-
 
 /* Responsive */
 @media (max-width: 768px) {
