@@ -49,8 +49,6 @@ function App() {
 
   return (
     <div className="app">
-      <BreathingWidget /> {/* Always visible breathing animation */}
-
       <div className="completed-tasks">
         <h3>Completed Tasks</h3>
         <ul>
@@ -63,6 +61,7 @@ function App() {
       </div>
 
       <div className="input-container">
+      <BreathingWidget />
         <div className="input-section">
           <input
             type="text"

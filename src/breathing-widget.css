@@ -1,29 +1,34 @@
-/* breathing-widget.css */
 .breathing-widget {
-  position: fixed;
-  top: 2rem;   /* Based on the root font size */
-  right: 2rem; /* Based on the root font size */
-  transform: none;
-  z-index: -1;
+  position: absolute;
+  top: 12rem; /* pull it up above the input */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .breathing-circle {
-  width: 120px;
-  height: 120px;
-  background: linear-gradient(45deg, #f8a1c4, #f7c4d5);
-  border-radius: 50%;
-  animation: breathing 4s infinite ease-in-out;
+  width: 128px;  /* Start as a small circle */
+  height: 128px; /* Fixed height for the circle */
+  background: linear-gradient(45deg, #f8a1c4, #f7c4d5);  /* Gradient for color */
+  border-radius: 50%;  /* Makes it a perfect circle */
+  transform-origin: center;  /* Ensure it expands from the center */
+  animation: breathing-circle-animation 19s ease-in-out infinite;
+  box-shadow: 0 0 3px rgba(248, 161, 196, 0.3), 0 0 6px rgba(248, 161, 196, 0.2); /* Subtle glow effect */
 }
 
-
-@keyframes breathing {
+/* Animation for the breathing circle */
+@keyframes breathing-circle-animation {
   0% {
-    transform: scale(1);
+    transform: scale(0.2);  /* Start from the center as a dot */
+    opacity: 0.8;
   }
-  50% {
-    transform: scale(1.2);
+  40% {
+    transform: scale(1);  /* Expands to full size */
+    opacity: 1;
   }
   100% {
-    transform: scale(1);
+    transform: scale(0.2);  /* Contracts back to a dot */
+    opacity: 0.8;
   }
 }
