@@ -1,20 +1,19 @@
 /* breathing-widget.css */
 .breathing-widget {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 2rem;   /* Based on the root font size */
+  right: 2rem; /* Based on the root font size */
+  transform: none;
   z-index: -1;
 }
 
 .breathing-circle {
   width: 120px;
   height: 120px;
-  background: linear-gradient(45deg, #a8dadc, #f1faee);
+  background: linear-gradient(45deg, #f8a1c4, #f7c4d5);
   border-radius: 50%;
   animation: breathing 4s infinite ease-in-out;
 }
-
 
 
 @keyframes breathing {
