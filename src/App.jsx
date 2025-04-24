@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import BreathingWidget from './components/BreathingWidget';
+import './breathing-widget.css';
+
 
 function App() {
   const [task, setTask] = useState('');

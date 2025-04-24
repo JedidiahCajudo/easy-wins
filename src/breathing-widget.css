@@ -1,0 +1,28 @@
+/* breathing-widget.css */
+.breathing-widget {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.breathing-circle {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(0, 128, 128, 0.5);
+  border-radius: 50%;
+  animation: breathing 4s infinite ease-in-out;
+}
+
+@keyframes breathing {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
