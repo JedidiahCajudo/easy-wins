@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import BreathingWidget from './components/BreathingWidget';
+import './breathing-widget.css';
+
 
 function App() {
   const [task, setTask] = useState('');
@@ -12,9 +15,9 @@ function App() {
 
     console.log('Loaded from localStorage:', savedTasks, savedCompletedTasks);
 
-    if (savedTasks && savedTasks.length > 0) setTasks(savedTasks); // If tasks exist in localStorage, set them
-    if (savedCompletedTasks && savedCompletedTasks.length > 0) setCompletedTasks(savedCompletedTasks); // If completed tasks exist, set them
-  }, []); // Run once, on component mount
+    if (savedTasks && savedTasks.length > 0) setTasks(savedTasks);
+    if (savedCompletedTasks && savedCompletedTasks.length > 0) setCompletedTasks(savedCompletedTasks);
+  }, []);
 
   // Handle new task input
   const handleInputChange = (e) => {
@@ -25,14 +28,14 @@ function App() {
   const handleAddTask = (e) => {
     if (e.key === 'Enter' && task.trim() !== '') {
       setTasks([...tasks, task]);
-      setTask('');  // Reset input field
+      setTask('');
     }
   };
 
   // Mark task as completed and trigger animation
   const handleCompleteTask = (completedTask) => {
-    setTasks(tasks.filter((task) => task !== completedTask)); // Remove from tasks
-    setCompletedTasks([...completedTasks, completedTask]); // Add to completed tasks
+    setTasks(tasks.filter((task) => task !== completedTask));
+    setCompletedTasks([...completedTasks, completedTask]);
   };
 
   // Save tasks and completedTasks to localStorage whenever they change
@@ -58,6 +61,7 @@ function App() {
       </div>
 
       <div className="input-container">
+      <BreathingWidget />
         <div className="input-section">
           <input
             type="text"
