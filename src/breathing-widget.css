@@ -1,6 +1,6 @@
 .breathing-widget {
   position: absolute;
-  top: 12rem; /* pull it up above the input */
+  top: 9.6rem; /* pull it up above the input */
   left: 50%;
   transform: translateX(-50%);
   z-index: 0;
@@ -8,8 +8,8 @@
 }
 
 .breathing-circle {
-  width: 128px;  /* Start as a small circle */
-  height: 128px; /* Fixed height for the circle */
+  width: 12vw;  /* Start as a small circle */
+  height: 12vw; /* Fixed height for the circle */
   background: linear-gradient(45deg, #f8a1c4, #f7c4d5);  /* Gradient for color */
   border-radius: 50%;  /* Makes it a perfect circle */
   transform-origin: center;  /* Ensure it expands from the center */
