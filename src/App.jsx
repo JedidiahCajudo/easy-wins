@@ -79,11 +79,18 @@ function App() {
             {tasks.map((task, index) => (
               <li key={index}>
                 {task}
-                <button onClick={() => handleCompleteTask(task)}>DONE</button>
+                <button
+                  onClick={() => handleCompleteTask(task)}
+                  className="task-button"
+                >
+                  <i className="fa fa-circle"></i> {/* Empty circle */}
+                  <i className="fa fa-check-circle"></i> {/* Checkmark (hidden by default) */}
+                </button>
               </li>
             ))}
           </ul>
         </div>
+
 
         <Timer />
 

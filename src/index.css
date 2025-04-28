@@ -112,22 +112,37 @@ input:focus {
   font-size: 1rem;
 }
 
-button {
-  background-color: #f0f0f0; /* Subtle light background to match the timer button */
-  color: #f0008e; /* Same theme color for text */
-  padding: 0.5rem 1rem;
-  border: 2px solid #f0f0f0; /* Light border that matches the background */
-  border-radius: 0.5rem;
+.task-button {
+  background-color: transparent; /* Transparent background */
+  border: none;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-button:hover {
-  background-color: #f0f0f0; /* Keep background consistent */
-  color: #f0008e; /* Same color for text on hover */
-  border-color: #f0f0f0; /* Keep border consistent */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+.task-button .fa-circle {
+  color: #f0008e; /* Empty circle color */
+  transition: opacity 0.3s ease;
+}
+
+.task-button .fa-check-circle {
+  color: #f0008e; /* Checkmark color */
+  opacity: 0; /* Hidden by default */
+  position: absolute;
+  transition: opacity 0.3s ease;
+}
+
+.task-button:hover .fa-circle {
+  opacity: 0; /* Hide empty circle on hover */
+}
+
+.task-button:hover .fa-check-circle {
+  opacity: 1; /* Show checkmark on hover */
 }
 
 
