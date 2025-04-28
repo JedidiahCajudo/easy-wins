@@ -9,5 +9,14 @@
 }
 
 .timer-container button {
-  
+  background-color: #f0f0f0;  /* Lighter background for secondary buttons */
+  color: #f0008e;  /* Use the same color as the main button but in a less intense form */
+  padding: 0.75rem 1.25rem;  /* Slightly larger padding for a button-like feel */
+  font-size: 1rem;  /* Slightly smaller text */
+}
+
+.timer-container button:hover {
+  background-color: #f7f7f7; /* Light gray */
+  color: #f0008e;  /* Main button color */
+  border-color: #f0c0d2; /* Light pinkish border */
 }
