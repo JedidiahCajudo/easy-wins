@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import React from 'react';
 import BreathingWidget from './components/BreathingWidget';
 import './breathing-widget.css';
+import Timer from './components/Timer';
 
 
 function App() {
@@ -82,6 +84,9 @@ function App() {
             ))}
           </ul>
         </div>
+
+        <Timer />
+        
       </div>
     </div>
   );
