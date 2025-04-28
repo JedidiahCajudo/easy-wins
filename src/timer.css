@@ -9,14 +9,17 @@
 }
 
 .timer-container button {
-  background-color: #f0f0f0;  /* Lighter background for secondary buttons */
-  color: #f0008e;  /* Use the same color as the main button but in a less intense form */
-  padding: 0.75rem 1.25rem;  /* Slightly larger padding for a button-like feel */
-  font-size: 1rem;  /* Slightly smaller text */
+  background-color: #f0f0f0; /* Light background for a subtle look */
+  color: #f0008e; /* Same color for text to maintain the theme */
+  padding: 0.5rem 1rem;
+  border: 2px solid #f0f0f0; /* Light border to match the background */
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  font-size: 1rem;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .timer-container button:hover {
-  background-color: #f7f7f7; /* Light gray */
-  color: #f0008e;  /* Main button color */
-  border-color: #f0c0d2; /* Light pinkish border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for focus */
 }
