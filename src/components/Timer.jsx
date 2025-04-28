@@ -14,14 +14,20 @@ const Timer = () => {
   });
 
   return (
-    <div>
+    <div className="timer-container">
       <p>
         {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </p>
       <div>
-        <button onClick={start}>Start Timer</button>
-        <button onClick={pause}>Pause Timer</button>
-        <button onClick={reset}>Reset Timer</button>
+        <button className="start" onClick={start}>
+          <i className="fa fa-play"></i>
+        </button>
+        <button className="done" onClick={pause}>
+          <i className="fa fa-pause"></i>
+        </button>
+        <button className="done" onClick={reset}>
+          <i className="fa fa-refresh"></i>
+        </button>
       </div>
     </div>
   );

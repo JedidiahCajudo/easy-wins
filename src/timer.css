@@ -1,0 +1,13 @@
+/* This will center the content within the Timer component */
+.timer-container {
+  text-align: center; /* Centers the text inside the div */
+}
+
+.timer-container p {
+  font-size: 3rem; /* Bigger font for the time */
+  font-weight: 700; /* Make it bold for better visibility */
+}
+
+.timer-container button {
+  
+}
