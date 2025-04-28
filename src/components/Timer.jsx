@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import { useTimer } from 'react-timer-hook';
+import '/src/timer.css';
 
 const Timer = () => {
-  // Get the current time and set the expiry time to 3 minutes from now
-  const time = new Date();
-  time.setSeconds(time.getSeconds() + 180); // 180 seconds = 3 minutes
+  // Set the expiry time to 3 minutes from now
+  const expiryTimestamp = new Date();
+  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 180); // 180 seconds = 3 minutes
 
   // Initialize the timer with the expiration time and a callback when it ends
   const { seconds, minutes, start, reset, pause } = useTimer({
-    expiryTimestamp: time,
+    expiryTimestamp,
     onExpire: () => alert('Time’s up!'),
   });
 
   return (
     <div>
-      <h2>Easy Wins Timer</h2>
       <p>
-        Time left: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+        {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </p>
       <div>
         <button onClick={start}>Start Timer</button>
