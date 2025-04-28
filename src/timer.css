@@ -1,0 +1,25 @@
+/* This will center the content within the Timer component */
+.timer-container {
+  text-align: center; /* Centers the text inside the div */
+}
+
+.timer-container p {
+  font-size: 3rem; /* Bigger font for the time */
+  font-weight: 700; /* Make it bold for better visibility */
+}
+
+.timer-container button {
+  background-color: #f0f0f0; /* Light background for a subtle look */
+  color: #f0008e; /* Same color for text to maintain the theme */
+  padding: 0.5rem 1rem;
+  border: 2px solid #f0f0f0; /* Light border to match the background */
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  font-size: 1rem;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.timer-container button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for focus */
+}
