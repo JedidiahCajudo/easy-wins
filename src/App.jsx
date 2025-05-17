@@ -70,7 +70,7 @@ function App() {
             value={task}
             onChange={handleInputChange}
             onKeyDown={handleAddTask}
-            placeholder="Type your task and press ENTER"
+            placeholder="Type the task and press ENTER"
           />
         </div>
 
