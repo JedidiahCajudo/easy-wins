@@ -2,7 +2,7 @@
 
 ## Purpose of the App
 
-**Easy Wins** is not a traditional productivity app. It's designed for people with executive function challenges, particularly those struggling with anxiety. The app provides a simple, manageable way to break down overwhelming tasks into smaller, winnable actions, helping users build momentum and reduce internal overwhelm.
+**Easy Wins** is not your usual productivity app. It's designed for people with executive function challenges, particularly those struggling with anxiety. The app provides a simple, manageable way to break down overwhelming tasks into smaller, winnable actions, helping users build momentum and reduce internal overwhelm.
 
 - **Not a productivity app:** This is a tool for managing internal overwhelm, not just a typical to-do list.
 - **Build momentum with small wins:** Focus on achieving small tasks, one at a time, to build momentum.
