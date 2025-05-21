@@ -32,7 +32,7 @@ input::placeholder {
 /* Completed Tasks */
 .completed-tasks {
   width: min(25%, 18rem); /* Takes up to 25% or max 18rem */
-  background-color: #eeeee6;
+background: linear-gradient(to bottom, #ffffff, #f8f2f6 60%, #f4d6e5);
   padding: 1.5rem;
   border-radius: 0.75rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
